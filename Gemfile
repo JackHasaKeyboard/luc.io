@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'haml', '~> 4.0.7'
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
+gem 'rails_12factor', group: :production
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
