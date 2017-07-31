@@ -73,4 +73,8 @@ $(document).ready(function() {
 			$('#' + type).append('<a><li>' + song['title'] + '</li></a>');
 		});
 	});
+
+	var current = track['protec'][0];
+
+	document.title = current['title'] + ' | luc.io'
 });
