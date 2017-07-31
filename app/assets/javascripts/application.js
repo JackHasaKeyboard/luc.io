@@ -18,7 +18,7 @@
 var key = 'AIzaSyBxDR9n9N0Hg1C2-7_5F1hDGjs4gu61bso'
 
 $(document).ready(function() {
-	var track = {
+	var link = {
 		protec: [
 			'https://www.youtube.com/watch?v=OCD99jMMuh0',
 			'https://www.youtube.com/watch?v=AXT4dxCrmEI',
@@ -33,23 +33,44 @@ $(document).ready(function() {
 
 	var youtubeVid = new RegExp('(?:youtube\.com\/watch\\?v=|youtu\.?be\/)([^ ]+)');
 
-	$.each(track, function(type, list) {
+	var track = {
+		protec: [
+		],
+		attac: [
+		]
+	};
+
+	$.each(link, function(type, list) {
 		$('#bar').append('<div id="' + type + '"></div>');
 
 		$.each(list, function(i, song) {
 			try {
 				var id = youtubeVid.exec(song)[1];
 
-				$.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + id + '&key=' + key + '&part=snippet,contentDetails', function(data) {
-					var title = data.items[0].snippet.title;
+				$.ajax({
+					url: 'https://www.googleapis.com/youtube/v3/videos?id=' + id + '&key=' + key + '&part=snippet,contentDetails',
+					dataType: 'json',
+					async: false,
+					success: function(data) {
+						title = data.items[0].snippet.title;
+					}
+				});
 
-					$('#' + type).append('<a><li>' + title + '</li></a>');
+				track[type].push({
+					id: id,
+					title: title
 				});
 			}
 
 			catch(err) {
 				alert(err)
 			}
+		});
+	});
+
+	$.each(track, function(type, list) {
+		$.each(list, function(i, song) {
+			$('#' + type).append('<a><li>' + song['title'] + '</li></a>');
 		});
 	});
 });
