@@ -13,6 +13,8 @@
  *= require_self
  */
 
+//= depend_on_asset "logo.png"
+
 @import "vars";
 @import "mixins";
 
@@ -80,4 +82,8 @@ svg {
 
 #attac {
 	color: $green;
+}
+
+#player {
+	display: none;
 }

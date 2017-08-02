@@ -63,7 +63,7 @@ $(document).ready(function() {
 			}
 
 			catch(err) {
-				alert(err)
+				console.log(err)
 			}
 		});
 	});
@@ -74,7 +74,21 @@ $(document).ready(function() {
 		});
 	});
 
-	var current = track['protec'][0];
+	var i = 0;
+	mode = 'protec'
 
-	document.title = current['title'] + ' | luc.io'
+	document.title = track[mode][i]['title'] + ' | luc.io';
+
+	// youtube player
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/player_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+	window.onYouTubePlayerAPIReady = function() {
+		player = new YT.Player('player', {
+			autoplay: 1,
+			videoId: track[mode][i]['id']
+		});
+	}
 });
