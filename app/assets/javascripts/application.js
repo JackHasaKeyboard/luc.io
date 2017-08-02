@@ -77,10 +77,8 @@ $(document).ready(function() {
 	var i = 0;
 	mode = 'protec'
 
-	document.title = track[mode][i]['title'] + ' | luc.io';
-
-	// youtube player
-	var tag = document.createElement('script');
+		// youtube player
+		var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/player_api";
 	var firstScriptTag = document.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -90,5 +88,58 @@ $(document).ready(function() {
 			autoplay: 1,
 			videoId: track[mode][i]['id']
 		});
+
+		$(document).on('keydown keyup', function(e) {
+			if (e.type == 'keydown') {
+				switch(e.which) {
+					case 32: // space
+						e.preventDefault();
+
+						switch(player.getPlayerState()) {
+							case 5:
+								player.playVideo();
+
+								break;
+
+							case 2:
+								player.playVideo();
+
+								break;
+
+							case 1:
+								player.pauseVideo();
+
+								break;
+						}
+
+						player.loadVideoById({
+							videoId: track[mode][i]['id']
+						});
+				}
+			}
+		});
 	}
+
+	document.title = track[mode][i]['title'] + ' | luc.io';
+
+	$(document).on('keydown keyup', function(e) {
+		if (e.type == 'keydown') {
+			switch(e.which) {
+				case 78: // n
+					if (i < track['protec'].length - 1) {
+						i++;
+					}
+
+					break;
+				case 80: // p
+					if (i > 0) {
+						i--;
+					}
+
+					break;
+			}
+
+			document.title = track[mode][i]['title'] + ' | luc.io';
+		}
+	});
 });
