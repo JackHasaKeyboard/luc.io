@@ -13,8 +13,6 @@
  *= require_self
  */
 
-//= depend_on_asset "logo.png"
-
 @import "vars";
 @import "mixins";
 
@@ -60,7 +58,7 @@ body {
 #cont {
 	display: flex;
 	flex-direction: column;
-	background: url('logo.png');
+	background: image-url('logo.png');
 	background-repeat: no-repeat;
 	background-position: center; 
 	flex-grow: 1;
