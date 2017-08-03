@@ -77,8 +77,8 @@ $(document).ready(function() {
 	var i = 0;
 	mode = 'protec'
 
-		// youtube player
-		var tag = document.createElement('script');
+	// youtube player
+	var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/player_api";
 	var firstScriptTag = document.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -120,26 +120,31 @@ $(document).ready(function() {
 		});
 	}
 
-	document.title = track[mode][i]['title'] + ' | luc.io';
+	function changeTrack() {
+		$('#bar a').css('text-decoration', 'none');
+		$('#bar #' + mode + ' a:nth-child(' + (i + 1) + ')').css('text-decoration', 'underline');
 
-	$(document).on('keydown keyup', function(e) {
-		if (e.type == 'keydown') {
-			switch(e.which) {
-				case 78: // n
-					if (i < track['protec'].length - 1) {
-						i++;
-					}
+		document.title = track[mode][i]['title'] + ' | luc.io';
+	}
 
-					break;
-				case 80: // p
-					if (i > 0) {
-						i--;
-					}
+	changeTrack();
 
-					break;
-			}
+	$(document).on('keydown', function(e) {
+		switch(e.which) {
+			case 78: // n
+				if (i < track['protec'].length - 1) {
+					i++;
+				}
 
-			document.title = track[mode][i]['title'] + ' | luc.io';
+				break;
+			case 80: // p
+				if (i > 0) {
+					i--;
+				}
+
+				break;
 		}
+
+		changeTrack();
 	});
 });
