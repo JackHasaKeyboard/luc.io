@@ -31,6 +31,11 @@ $(document).ready(function() {
 		]
 	};
 
+	var color = {
+		protec: [246, 237, 96],
+		attac: [69, 234, 34]
+	};
+
 	var youtubeVid = new RegExp('(?:youtube\.com\/watch\\?v=|youtu\.?be\/)([^ ]+)');
 
 	var track = {
@@ -146,5 +151,14 @@ $(document).ready(function() {
 		}
 
 		changeTrack();
+	});
+
+	$('#bar div').click(function() {
+		mode = $(this).attr('id');
+
+		$('svg path').attr({
+			'fill': 'rgba(' + color[mode] + ', 0.26)',
+			'stroke': 'rgb(' + color[mode] + ')'
+		});
 	});
 });
