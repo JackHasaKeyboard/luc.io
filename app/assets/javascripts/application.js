@@ -46,7 +46,7 @@ $(document).ready(function() {
 	};
 
 	$.each(link, function(type, list) {
-		$('#bar').append('<div id="' + type + '"></div>');
+		$('#track').append('<div id="' + type + '"></div>');
 
 		$.each(list, function(i, song) {
 			try {
