@@ -80,37 +80,27 @@ $(document).ready(function() {
 			autoplay: 1,
 			videoId: track[mode][i]['id']
 		});
-
-		$(document).on('keydown keyup', function(e) {
-			if (e.type == 'keydown') {
-				switch(e.which) {
-					case 32: // space
-						e.preventDefault();
-
-						switch(player.getPlayerState()) {
-							case 5:
-								player.playVideo();
-
-								break;
-
-							case 2:
-								player.playVideo();
-
-								break;
-
-							case 1:
-								player.pauseVideo();
-
-								break;
-						}
-
-						player.loadVideoById({
-							videoId: track[mode][i]['id']
-						});
-				}
-			}
-		});
 	}
+
+	$(document).on('keydown keyup', function(e) {
+		if (e.type == 'keydown') {
+			switch(e.which) {
+				case 32: // space
+					e.preventDefault();
+
+					togTrack();
+
+					break;
+
+				case 13: // enter
+					player.loadVideoById({
+						videoId: track[mode][i]['id']
+					});
+
+					break;
+			}
+		}
+	});
 
 	function changeTrack() {
 		$('#bar a').css('text-decoration', 'none');
@@ -139,6 +129,40 @@ $(document).ready(function() {
 
 		changeTrack();
 	});
+
+	$('#next').click(function() {
+		if (i < track['protec'].length - 1) {
+			i++;
+		}
+
+		changeTrack();
+	});
+
+	$('#prev').click(function() {
+		if (i > 0) {
+			i--;
+		}
+
+		changeTrack();
+	});
+
+	$('#tog').click(function() {
+		togTrack();
+	});
+
+	function togTrack() {
+		if (player.getPlayerState() == 1) { // playing
+			player.pauseVideo();
+
+			$('#tog i').attr('class', 'fa fa-play');
+		}
+
+		if (player.getPlayerState() == 5 || player.getPlayerState() == 2) { // cued, paused
+			player.playVideo();
+
+			$('#tog i').attr('class', 'fa fa-pause');
+		}
+	}
 
 	$('#bar div').click(function() {
 		mode = $(this).attr('id');

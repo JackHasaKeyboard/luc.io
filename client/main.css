@@ -4,6 +4,7 @@
 
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
 
 li {
@@ -23,9 +24,11 @@ body {
 	display: flex;
 	margin: 0;
 }
+
 body > div {
 	padding: 10px;
 }
+
 body > div > * {
 	padding: 10px;
 }
@@ -35,9 +38,11 @@ body > div > * {
 	flex-direction: column;
 	color: #fff;
 }
+
 #bar #track {
 	flex-grow: 1;
 }
+
 #bar li.active {
 	color: #45ea22;
 }
@@ -50,9 +55,21 @@ body > div > * {
 	background-position: center;
 	flex-grow: 1;
 }
+
+#ctrl {
+	display: flex;
+	text-align: center;
+	color: #fff;
+}
+
+#cont a {
+	flex-grow: 1;
+}
+
 #cont #wave {
 	margin-top: auto;
 }
+
 #cont #wave svg {
 	overflow: visible;
 }
