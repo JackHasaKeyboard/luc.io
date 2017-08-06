@@ -1,0 +1,74 @@
+* {
+	font-family: BigNoodleTooOblique;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #202020;
+	display: flex;
+	margin: 0;
+}
+body > div {
+	padding: 10px;
+}
+body > div > * {
+	padding: 10px;
+}
+
+#bar {
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+}
+#bar #track {
+	flex-grow: 1;
+}
+#bar li.active {
+	color: #45ea22;
+}
+
+#cont {
+	display: flex;
+	flex-direction: column;
+	background: url('logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	flex-grow: 1;
+}
+#cont #wave {
+	margin-top: auto;
+}
+#cont #wave svg {
+	overflow: visible;
+}
+
+svg {
+	filter: drop-shadow(0px 0px 1.5px #45ea22);
+}
+
+#protec {
+	color: #f6ed60;
+}
+
+#attac {
+	color: #45ea22;
+}
+
+#player {
+	display: none;
+}
