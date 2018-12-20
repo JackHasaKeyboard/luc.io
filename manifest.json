@@ -1,0 +1,27 @@
+{
+	"manifest_version": 2,
+	"name": "Lúc.io",
+	"description": "Break it down in Chrome",
+	"version": "0.1",
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*.youtube.com/watch*"
+			],
+			"js": [
+				"jquery.js",
+				"index.js"
+			],
+			"css": [
+				"index.css"
+			], 
+			"run_at": "document_end"
+		}
+	],
+	"web_accessible_resources": [
+		"logo.png"
+	],
+	"permissions": [
+		"activeTab"
+	]
+}
