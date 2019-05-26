@@ -25,7 +25,11 @@ async function sleep(
 
 $(document).ready(function() {
 	$("#info").ready(() => {
-		$("#info").prepend("<div id='lucio'></div>");
+		$("#info").prepend(
+			`
+			<div id='lucio'></div>
+			`
+		);
 
 		var video = $(".video-stream")[0];
 
@@ -38,7 +42,18 @@ $(document).ready(function() {
 		src.connect(analyser);
 		analyser.connect(ctx.destination);
 
-		$("#lucio").append("<svg id='scope' overflow='visible' stroke='rgb(69, 234, 34)' fill='rgba(69, 234, 34, 0.6)' stroke-width='6px'><path /></svg>");
+		$("#lucio").append(
+			`
+			<svg
+				id='scope'
+				overflow='visible'
+				stroke='rgb(69, 234, 34)'
+				fill='rgba(69, 234, 34, 0.6)'
+				stroke-width='6px'>
+				<path />
+			</svg>
+			`
+		);
 
 		var
 			val = [],
@@ -80,8 +95,24 @@ $(document).ready(function() {
 			}
 		);
 
-		$("#lucio").append("<div id='control'></div>");
-		$("#control").append("<label id='tog' class='switch'><input type='checkbox'><span class='slider'></span></label>");
+		$("#lucio").append(
+			`
+			<div id='control'></div>
+			`
+		);
+		$("#control").append(
+			`
+			<label
+				id='tog'
+				class='switch'><input
+				type='checkbox'
+			>
+				<span
+					class='slider'
+				></span>
+			</label>
+			`
+		);
 
 		$(".slider").css(
 			{
