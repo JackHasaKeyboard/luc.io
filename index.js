@@ -115,7 +115,7 @@ $(document).ready(function() {
 			];
 
 			for (
-				var i = 0;
+				let i = 0;
 				i < samp + 1;
 				i++
 			) {
@@ -163,7 +163,7 @@ $(document).ready(function() {
 
 			var bar = {};
 			for (
-				var i = 0;
+				let i = 0;
 				i < cnt;
 				i++
 			) {
