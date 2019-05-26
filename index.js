@@ -1,26 +1,19 @@
-const len = 5000;
-
-function timeout(
-	ms
-) {
-	return new Promise(
-		resolve => setTimeout(
-			resolve,
-			ms
-		)
-	);
-}
-
 async function sleep(
 	fn,
-	...args
+	ms
 ) {
-	await timeout(
-		len / 100
-	);
-	return fn(
-		...args
-	);
+	async function timeOut() {
+		return new Promise(
+			(resolve) => setTimeout(
+				resolve,
+				ms
+			)
+		);
+	}
+	
+	await timeOut();
+
+	return fn();
 }
 
 $(document).ready(function() {
