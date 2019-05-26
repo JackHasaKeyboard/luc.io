@@ -80,7 +80,7 @@ $(document).ready(function() {
 			}
 		);
 
-		$("#lucio").append("<div id='control'></control>");
+		$("#lucio").append("<div id='control'></div>");
 		$("#control").append("<label id='tog' class='switch'><input type='checkbox'><span class='slider'></span></label>");
 
 		$(".slider").css(
