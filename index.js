@@ -20,7 +20,9 @@ $(document).ready(function() {
 	$("#info").ready(() => {
 		$("#info").prepend(
 			`
-			<div id='lucio'></div>
+			<div
+				id='lucio'
+			></div>
 			`
 		);
 
@@ -41,8 +43,9 @@ $(document).ready(function() {
 				id='scope'
 				overflow='visible'
 				stroke='rgb(69, 234, 34)'
+				stroke-width='6px'
 				fill='rgba(69, 234, 34, 0.6)'
-				stroke-width='6px'>
+			>
 				<path />
 			</svg>
 			`
@@ -99,7 +102,9 @@ $(document).ready(function() {
 
 		$("#lucio").append(
 			`
-			<div id='control'></div>
+			<div
+				id='control'
+			></div>
 			`
 		);
 		$("#control").append(
@@ -116,11 +121,9 @@ $(document).ready(function() {
 			`
 		);
 
-		$(".slider").css(
-			{
-				"background-color": "rgb(" + (col[mode][0][0]) + "," + (col[mode][0][1]) + "," + (col[mode][0][2]) + ")"
-			}
-		);
+		$(".slider").css({
+			"background-color": "rgb(" + (col[mode][0][0]) + "," + (col[mode][0][1]) + "," + (col[mode][0][2]) + ")"
+		});
 
 		$("#tog").mousedown(async function() {
 			if (mode == 0) {
@@ -160,16 +163,14 @@ $(document).ready(function() {
 						upd[2] = col[snd][0][2] + ((inc[2] * i) * dir);
 						upd[3] = col[snd][1][0] + ((inc[3] * i) * dir);
 
-						$(".slider").css(
-							{
-								"background-color": "rgb(" + (upd[0]) + "," + (upd[1]) + "," + (upd[2]) + ")"
-							}
-						);
+						$(".slider").css({
+							"background-color": "rgb(" + (upd[0]) + "," + (upd[1]) + "," + (upd[2]) + ")"
+						});
 
 						var el = document.getElementById("scope");
 
 						el.style.stroke = "rgb(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ")";
-						el.style.fill = 'rgba(' + (upd[0]) + ',' + (upd[1]) + ',' + (upd[2]) + ',' + upd[3] + ')';
+						el.style.fill = "rgba(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ", " + upd[3] + ")";
 					},
 					1000 / samp
 				);
@@ -177,8 +178,6 @@ $(document).ready(function() {
 		});
 
 		// draw
-		draw();
-
 		function draw() {
 			window.requestAnimationFrame(draw);
 
@@ -191,7 +190,7 @@ $(document).ready(function() {
 			$("#scope path").attr(
 				"d",
 				s
-			)
+			);
 
 			var
 				wd = $("#lucio").width(),
@@ -223,5 +222,7 @@ $(document).ready(function() {
 				"\n"
 			);
 		}
+
+		draw();
 	});
 });
