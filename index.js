@@ -21,7 +21,7 @@ $(document).ready(function() {
 		$("#info").prepend(
 			`
 			<div
-				id='lucio'
+				id="lucio"
 			></div>
 			`
 		);
@@ -40,11 +40,11 @@ $(document).ready(function() {
 		$("#lucio").append(
 			`
 			<svg
-				id='scope'
-				overflow='visible'
-				stroke='rgb(69, 234, 34)'
-				stroke-width='6px'
-				fill='rgba(69, 234, 34, 0.6)'
+				id="scope"
+				overflow="visible"
+				stroke="rgb(69, 234, 34)"
+				stroke-width="6px"
+				fill="rgba(69, 234, 34, 0.6)"
 			>
 				<path />
 			</svg>
@@ -103,19 +103,19 @@ $(document).ready(function() {
 		$("#lucio").append(
 			`
 			<div
-				id='control'
+				id="control"
 			></div>
 			`
 		);
 		$("#control").append(
 			`
 			<label
-				id='tog'
-				class='switch'><input
-				type='checkbox'
+				id="tog"
+				class="switch"><input
+				type="checkbox"
 			>
 				<span
-					class='slider'
+					class="slider"
 				></span>
 			</label>
 			`
