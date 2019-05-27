@@ -145,9 +145,9 @@ $(document).ready(function() {
 			) {
 				await sleep(
 					() => {
-						upd[0] = col[fst][0] + (inc[0] * i) * dir;
-						upd[1] = col[fst][1] + (inc[1] * i) * dir;
-						upd[2] = col[fst][2] + (inc[2] * i) * dir;
+						upd[0] = col[snd][0] + ((inc[0] * i) * dir);
+						upd[1] = col[snd][1] + ((inc[1] * i) * dir);
+						upd[2] = col[snd][2] + ((inc[2] * i) * dir);
 
 						$(".slider").css(
 							{
@@ -156,9 +156,11 @@ $(document).ready(function() {
 						);
 
 						var el = document.getElementById("scope");
+
 						el.style.stroke = "rgb(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ")";
 						el.style.fill = 'rgba(' + (upd[0]) + ',' + (upd[1]) + ',' + (upd[2]) + ', 0.6)';
-					}
+					},
+					1000 / samp
 				);
 			}
 		});
