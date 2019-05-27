@@ -167,10 +167,10 @@ $(document).ready(function() {
 							"background-color": "rgb(" + (upd[0]) + "," + (upd[1]) + "," + (upd[2]) + ")"
 						});
 
-						var el = document.getElementById("scope");
-
-						el.style.stroke = "rgb(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ")";
-						el.style.fill = "rgba(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ", " + upd[3] + ")";
+						$("#scope").css({
+							"stroke": "rgb(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ")",
+							"fill": "rgba(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ", " + upd[3] + ")"
+						});
 					},
 					1000 / samp
 				);
