@@ -58,20 +58,29 @@ $(document).ready(function() {
 		const
 			col = [ 
 				[
-					246,
-					237,
-					96
+					[
+						246,
+						237,
+						96
+					], [
+						0.6
+					]
 				], [
-					69,
-					234,
-					34
+					[
+						69,
+						234,
+						34
+					], [
+						0
+					]
 				]
 			],
 
 			diff = [
 				246 - 69,
 				237 - 234,
-				96 - 34
+				96 - 34,
+				0.6 - 0
 			],
 
 			samp = 10;
@@ -83,8 +92,8 @@ $(document).ready(function() {
 
 		$("#scope").attr(
 			{
-				"stroke": "rgb(" + (col[mode][0]) + ", " + (col[mode][1]) + ", " + (col[mode][2]) + ")",
-				"fill": "rgba(" + (col[mode][0]) + ", " + (col[mode][1]) + ", " + (col[mode][2]) + ", 0.6)"
+				"stroke": "rgb(" + (col[mode][0][0]) + ", " + (col[mode][0][1]) + ", " + (col[mode][0][2]) + ")",
+				"fill": "rgba(" + (col[mode][0][0]) + ", " + (col[mode][0][1]) + ", " + (col[mode][0][2]) + ", " + (col[mode][1][0]) + ")"
 			}
 		);
 
@@ -109,7 +118,7 @@ $(document).ready(function() {
 
 		$(".slider").css(
 			{
-				"background-color": "rgb(" + (col[mode][0]) + "," + (col[mode][1]) + "," + (col[mode][2]) + ")"
+				"background-color": "rgb(" + (col[mode][0][0]) + "," + (col[mode][0][1]) + "," + (col[mode][0][2]) + ")"
 			}
 		);
 
@@ -135,7 +144,8 @@ $(document).ready(function() {
 			const inc = [
 				diff[0] / samp,
 				diff[1] / samp,
-				diff[2] / samp
+				diff[2] / samp,
+				diff[3] / samp
 			];
 
 			for (
@@ -145,9 +155,10 @@ $(document).ready(function() {
 			) {
 				await sleep(
 					() => {
-						upd[0] = col[snd][0] + ((inc[0] * i) * dir);
-						upd[1] = col[snd][1] + ((inc[1] * i) * dir);
-						upd[2] = col[snd][2] + ((inc[2] * i) * dir);
+						upd[0] = col[snd][0][0] + ((inc[0] * i) * dir);
+						upd[1] = col[snd][0][1] + ((inc[1] * i) * dir);
+						upd[2] = col[snd][0][2] + ((inc[2] * i) * dir);
+						upd[3] = col[snd][1][0] + ((inc[3] * i) * dir);
 
 						$(".slider").css(
 							{
@@ -158,7 +169,7 @@ $(document).ready(function() {
 						var el = document.getElementById("scope");
 
 						el.style.stroke = "rgb(" + (upd[0]) + ", " + (upd[1]) + ", " + (upd[2]) + ")";
-						el.style.fill = 'rgba(' + (upd[0]) + ',' + (upd[1]) + ',' + (upd[2]) + ', 0.6)';
+						el.style.fill = 'rgba(' + (upd[0]) + ',' + (upd[1]) + ',' + (upd[2]) + ',' + upd[3] + ')';
 					},
 					1000 / samp
 				);
