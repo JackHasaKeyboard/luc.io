@@ -185,18 +185,26 @@ $(document).ready(function() {
 			var
 				wd = $("#lucio").width(),
 				cnt = 10,
-				spc = (wd / cnt);
+				spc = (wd / cnt),
+
+				mod = 1;
 
 			var bar = {};
 			for (
 				let i = 0;
-				i < cnt;
+				i < cnt + 1;
 				i++
 			) {
 				if (i == 0) {
-					val[i] = "M 0, " + (-(fbc[i] / 5));
+					val[i] = "M 0, 0";
 				} else {
-					val[i] = "L " + ((i * spc) + spc) + ", " + (-(fbc[i] / 5));
+					val[i] = "Q " + (((i - 1) * spc) + (spc / 2)) + " " + ((fbc[i] / 5) * mod) + " " +  (((i - 1) * spc) + spc) + " " + 0;
+				}
+
+				if (mod == 1) {
+					mod = -1;
+				} else if (mod == -1) {
+					mod = 1;
 				}
 			}
 
