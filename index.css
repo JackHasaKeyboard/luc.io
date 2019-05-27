@@ -9,7 +9,7 @@
 
 #scope {
 	position: absolute;
-	margin-top: 100px;
+	margin-top: calc(50px + 4px);
 }
 
 #btn {
